@@ -4,6 +4,7 @@ import com.dept.assessment.consts.Constants;
 import com.dept.assessment.pages.CreateRepositoryPage;
 import com.dept.assessment.pages.HomePage;
 import com.dept.assessment.pages.LoginPage;
+import com.dept.assessment.pages.RepositoryPage;
 import cucumber.api.PendingException;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
@@ -26,6 +27,7 @@ public class CreateRepository {
     private WebDriver driver;
     private LoginPage loginpPage;
     private HomePage homePage;
+    private RepositoryPage repositoryPage;
     private CreateRepositoryPage createRepoPage;
     private String repoName = "DeptAssessmen1t";
     private String repoDescription = "Dept assessment repo for testing purposes";
@@ -89,7 +91,8 @@ public class CreateRepository {
     }
 
     @Then("^I should be at the new repository's page$")
-    public void iShouldBeAtTheNewRepositorySPage() throws Throwable {
-        Assert.assertTrue(driver.getCurrentUrl().contains(repoName));
+    public void iShouldBeAtTheNewRepositorySPage() {
+        repositoryPage = new RepositoryPage(driver);
+        Assert.assertTrue(repositoryPage.getNameRepoCreated().equals(repoName));
     }
 }

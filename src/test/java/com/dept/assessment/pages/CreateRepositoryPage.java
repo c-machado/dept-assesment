@@ -48,9 +48,6 @@ public class CreateRepositoryPage {
     @FindBy(css = "dd.error")
     public WebElement errorExistingRepo;
 
-
-
-
     public CreateRepositoryPage(WebDriver _driver) {
         this.driver = _driver;
         PageFactory.initElements(_driver,this);

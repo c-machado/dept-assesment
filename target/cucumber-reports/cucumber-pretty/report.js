@@ -7,7 +7,7 @@ formatter.feature({
   "keyword": "Feature"
 });
 formatter.before({
-  "duration": 4148648111,
+  "duration": 2694218004,
   "status": "passed"
 });
 formatter.background({
@@ -26,7 +26,7 @@ formatter.match({
   "location": "CreateRepository.iAmLoggedInTheGithubSWebsite()"
 });
 formatter.result({
-  "duration": 3635093501,
+  "duration": 2786519013,
   "status": "passed"
 });
 formatter.scenario({
@@ -61,29 +61,28 @@ formatter.match({
   "location": "CreateRepository.iMAtTheHomepage()"
 });
 formatter.result({
-  "duration": 64324182,
+  "duration": 41713496,
   "status": "passed"
 });
 formatter.match({
   "location": "CreateRepository.iClickOnTheCreateRepositoryCTA()"
 });
 formatter.result({
-  "duration": 689335496,
+  "duration": 581069358,
   "status": "passed"
 });
 formatter.match({
   "location": "CreateRepository.iSubmitTheNewRepositorySInformation()"
 });
 formatter.result({
-  "duration": 4103545657,
+  "duration": 5303386236,
   "status": "passed"
 });
 formatter.match({
   "location": "CreateRepository.iShouldBeAtTheNewRepositorySPage()"
 });
 formatter.result({
-  "duration": 6683568,
-  "error_message": "java.lang.AssertionError: expected [true] but found [false]\n\tat org.testng.Assert.fail(Assert.java:94)\n\tat org.testng.Assert.failNotEquals(Assert.java:494)\n\tat org.testng.Assert.assertTrue(Assert.java:42)\n\tat org.testng.Assert.assertTrue(Assert.java:52)\n\tat com.dept.assessment.steps.CreateRepository.iShouldBeAtTheNewRepositorySPage(CreateRepository.java:93)\n\tat ✽.Then I should be at the new repository\u0027s page(manageRepositories.feature:12)\n",
-  "status": "failed"
+  "duration": 39491431,
+  "status": "passed"
 });
 });
