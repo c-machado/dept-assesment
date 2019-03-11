@@ -5,18 +5,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class RepositoriesList {
+public class RepositoryPage {
 
     private WebDriver driver;
 
-    @FindBy(id = "your-repos-filter")
-    public WebElement searchInput;
+    @FindBy(css = "[itemprop='name']")
+    public WebElement repoCreatedName;
 
-    @FindBy(css = ".user-repo-search-results-summary strong")
-    public WebElement totalResultsNumber;
-
-    public RepositoriesList(WebDriver _driver) {
+    public RepositoryPage(WebDriver _driver) {
         this.driver = _driver;
         PageFactory.initElements(_driver,this);
+    }
+
+    public String getNameRepoCreated() {
+        return repoCreatedName.getText().toString();
     }
 }

@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Settings {
+public class SettingsPage {
 
     private WebDriver driver;
 
@@ -18,7 +18,7 @@ public class Settings {
     @FindBy(css = ".Box--danger .Box-row:last-child form [type='submit']")
     public WebElement buttonConfirmDeleteRepo;
 
-    public Settings(WebDriver _driver) {
+    public SettingsPage(WebDriver _driver) {
         this.driver = _driver;
         PageFactory.initElements(_driver,this);
     }

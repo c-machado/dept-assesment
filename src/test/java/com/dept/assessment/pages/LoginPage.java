@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Login {
+public class LoginPage {
 
     private WebDriver driver;
 
@@ -18,7 +18,7 @@ public class Login {
     @FindBy(name = "commit")
     public WebElement loginCta;
 
-    public Login(WebDriver _driver) {
+    public LoginPage(WebDriver _driver) {
         this.driver = _driver;
         PageFactory.initElements(_driver,this);
     }
