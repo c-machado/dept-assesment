@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class RepositoriesList {
+public class RepositoriesListPage {
 
     private WebDriver driver;
 
@@ -15,7 +15,7 @@ public class RepositoriesList {
     @FindBy(css = ".user-repo-search-results-summary strong")
     public WebElement totalResultsNumber;
 
-    public RepositoriesList(WebDriver _driver) {
+    public RepositoriesListPage(WebDriver _driver) {
         this.driver = _driver;
         PageFactory.initElements(_driver,this);
     }
