@@ -15,7 +15,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.asserts.Assertion;
 
 
 import java.util.Iterator;
@@ -29,7 +28,7 @@ public class CreateRepository {
     private HomePage homePage;
     private RepositoryPage repositoryPage;
     private CreateRepositoryPage createRepoPage;
-    private String repoName = "DeptAssessmen1t";
+    private String repoName = "DeptAssessment";
     private String repoDescription = "Dept assessment repo for testing purposes";
     private String gitOptionsFilter = "J";
     private String gitIgnoreTemplate = "Java";
@@ -93,6 +92,33 @@ public class CreateRepository {
     @Then("^I should be at the new repository's page$")
     public void iShouldBeAtTheNewRepositorySPage() {
         repositoryPage = new RepositoryPage(driver);
-        Assert.assertTrue(repositoryPage.getNameRepoCreated().equals(repoName));
+        Assert.assertTrue(repositoryPage.getRepositoryName().equals(repoName));
+    }
+
+    @Given("^I'm at the Create a new repository page$")
+    public void iMAtTheCreateANewRepositoryPage() {
+        driver.get(Constants.NEW_REPO_URL);
+        Assert.assertTrue(driver.getCurrentUrl().equals(Constants.NEW_REPO_URL));
+    }
+
+    @When("^I fill out a name of an existing repository$")
+    public void iFillOutANameOfAnExistingRepository() {
+        createRepoPage = new CreateRepositoryPage(driver);
+        createRepoPage.enterRepoName(repoName);
+    }
+
+    @Then("^I should see an error message$")
+    public void iShouldSeeAnErrorMessage() {
+        Assert.assertTrue(createRepoPage.errorExistingRepo.isDisplayed());
+    }
+
+    @Given("^I'm at the settings repository's page$")
+    public void iMAtTheSettingsRepositorySPage() {
+        homePage = new HomePage(driver);
+        repositoryPage = new RepositoryPage(driver);
+        homePage.filterRepositoryByKeyword(repoName);
+        homePage.clickOnFirstResultLink();
+        repositoryPage.clickOnSettingsTab();
+
     }
 }
