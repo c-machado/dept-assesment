@@ -1,4 +1,4 @@
-package com.dept.assessment;
+package com.dept.assessment.runner;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.TestNGCucumberRunner;
@@ -9,7 +9,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 @CucumberOptions(
-        features = "src/main/resources",
+        features = "src/test/java/resources",
         glue = {"com.dept.assessment.steps"},
         tags = {"~@Ignore"},
         format = {
