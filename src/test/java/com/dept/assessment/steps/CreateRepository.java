@@ -1,11 +1,8 @@
 package com.dept.assessment.steps;
 
 import com.dept.assessment.consts.Constants;
-import com.dept.assessment.pages.CreateRepositoryPage;
-import com.dept.assessment.pages.HomePage;
-import com.dept.assessment.pages.LoginPage;
-import com.dept.assessment.pages.RepositoryPage;
-import cucumber.api.PendingException;
+import com.dept.assessment.pages.*;
+import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -28,21 +25,22 @@ public class CreateRepository {
     private HomePage homePage;
     private RepositoryPage repositoryPage;
     private CreateRepositoryPage createRepoPage;
-    private String repoName = "DeptAssessment";
+    private SettingsPage settingsPage;
+    private String repoName = "DeptAssesment";
     private String repoDescription = "Dept assessment repo for testing purposes";
     private String gitOptionsFilter = "J";
     private String gitIgnoreTemplate = "Java";
+    private String deletedMessageSubstring = "was successfully deleted.";
+
 
     @Before
     public void setUp() {
-        System.out.println("en setup");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(1,TimeUnit.SECONDS);
     }
 
     @Given("^I am logged in the Github's website$")
     public void iAmLoggedInTheGithubSWebsite() {
-        System.out.println("en given");
         driver.get(Constants.LOGIN_URL);
         loginpPage = new LoginPage(driver);
         loginpPage.enterUsername(Constants.USERNAME);
@@ -54,10 +52,6 @@ public class CreateRepository {
     public void iMAtTheHomepage() {
         homePage = new HomePage(driver);
         Assert.assertTrue(homePage.isPageOpen());
-    }
-
-    public void close(){
-        driver.close();
     }
 
     @When("^I click on the create Repository CTA$")
@@ -84,7 +78,6 @@ public class CreateRepository {
         while(filterIterator.hasNext()) {
             WebElement gitIgnoreOption = filterIterator.next();
             String optionLabel = gitIgnoreOption.getText().substring(0, 1);
-            System.out.println("string ignore" + optionLabel);
             Assert.assertTrue(optionLabel.equals(gitOptionsFilter));
         }
     }
@@ -121,4 +114,29 @@ public class CreateRepository {
         repositoryPage.clickOnSettingsTab();
 
     }
+
+    @When("^I click on the Delete repository CTA$")
+    public void iClickOnTheDeleteRepositoryCTA() {
+        settingsPage = new SettingsPage(driver);
+        settingsPage.clickDeleteRepositoryCTA();
+    }
+
+    @And("^I confirm that I want to delete the repository$")
+    public void iConfirmThatIWantToDeleteTheRepository() {
+        settingsPage.enterRepoNameToDelete(repoName);
+        settingsPage.clickConfirmDeleteAction();
+    }
+
+    @Then("^I should see a message confirming that the repository was deleted$")
+    public void iShouldSeeAMessageConfirmingThatTheRepositoryWasDeleted() {
+        homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.deletedRepoMessage.getText().contains(deletedMessageSubstring));
+    }
+
+    @After
+    public void close(){
+        driver.close();
+    }
+
+
 }

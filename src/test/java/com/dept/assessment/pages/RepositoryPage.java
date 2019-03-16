@@ -21,7 +21,7 @@ public class RepositoryPage {
     }
 
     public String getRepositoryName() {
-        return repositoryName.getText().toString();
+        return repositoryName.getText();
     }
 
     public void clickOnSettingsTab() {

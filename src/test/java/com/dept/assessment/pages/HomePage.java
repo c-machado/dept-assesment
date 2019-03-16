@@ -6,17 +6,22 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+
 public class HomePage {
 
     private WebDriver driver;
     private String headingTitle = "Learn Git and GitHub without any code!";
     private String firstResultSelector = "[data-filterable-for='dashboard-repos-filter-left'] li:first-child";
 
+
     @FindBy(css = ".shelf-cta[href='/new']")
     public WebElement startAProjectCTA;
 
     @FindBy(css = ".shelf-title")
     public WebElement headingHomePage;
+
+    @FindBy(id = "js-flash-container")
+    public WebElement deletedRepoMessage;
 
     @FindBy(id = "dashboard-repos-filter-left")
     public WebElement filterRepositoryField;
