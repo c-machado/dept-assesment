@@ -9,13 +9,8 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-
-
-import java.util.Iterator;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class CreateRepository {
@@ -31,7 +26,6 @@ public class CreateRepository {
     private String gitOptionsFilter = "J";
     private String gitIgnoreTemplate = "Java";
     private String deletedMessageSubstring = "was successfully deleted.";
-
 
     @Before
     public void setUp() {
@@ -67,19 +61,9 @@ public class CreateRepository {
         createRepoPage.selectPrivateRepo();
         createRepoPage.checkCreateReadme();
         createRepoPage.openGitIgnoreOptions();
-        validateGitIgnoreFilter();
+        Assert.assertTrue(createRepoPage.getGitIgnoreOption(gitOptionsFilter).equals(gitOptionsFilter));
         createRepoPage.clickGitIgnoreOption(gitIgnoreTemplate);
         createRepoPage.clickOnSubmitRepo();
-    }
-
-    private void validateGitIgnoreFilter() {
-        List<WebElement> filteredOptions = createRepoPage.filterGitIgnoreOptions(gitOptionsFilter);
-        Iterator<WebElement> filterIterator = filteredOptions.iterator();
-        while(filterIterator.hasNext()) {
-            WebElement gitIgnoreOption = filterIterator.next();
-            String optionLabel = gitIgnoreOption.getText().substring(0, 1);
-            Assert.assertTrue(optionLabel.equals(gitOptionsFilter));
-        }
     }
 
     @Then("^I should be at the new repository's page$")
@@ -112,7 +96,6 @@ public class CreateRepository {
         homePage.filterRepositoryByKeyword(repoName);
         homePage.clickOnFirstResultLink();
         repositoryPage.clickOnSettingsTab();
-
     }
 
     @When("^I click on the Delete repository CTA$")
@@ -137,6 +120,4 @@ public class CreateRepository {
     public void close(){
         driver.close();
     }
-
-
 }

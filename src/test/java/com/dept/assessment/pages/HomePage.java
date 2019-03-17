@@ -6,13 +6,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-
 public class HomePage {
 
     private WebDriver driver;
     private String headingTitle = "Learn Git and GitHub without any code!";
     private String firstResultSelector = "[data-filterable-for='dashboard-repos-filter-left'] li:first-child";
-
 
     @FindBy(css = ".shelf-cta[href='/new']")
     public WebElement startAProjectCTA;
@@ -35,6 +33,10 @@ public class HomePage {
         startAProjectCTA.click();
     }
 
+    /**
+     * Validates page's title content to confirm the page has been loaded
+     * @return boolean
+     */
     public boolean isPageOpen() {
         return headingHomePage.getText().contains(headingTitle);
     }
