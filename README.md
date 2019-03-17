@@ -1,11 +1,10 @@
 # dept-assessment
-Automated test of the Github repository creation process.
-
-TestSuite to complete the process of creation and deletion of a Github repository.
-This project has been built using Java, Cucumber, Selenium and TestNG. All the expected behaviours have been documented using the Gherkin language. 
+TestSuite for the process of creation and deletion of a Github repository.
+This project has been built using Java, Cucumber, Selenium and TestNG.
+ All the expected behaviours have been documented using the Gherkin language. 
 
 ## Prerequisites
-In order to run this this site you'll be needing:
+In order to run this this suite you'll need:
 1. Latest version of Java (v.11.0.2)
 1. Latest version of Maven to build and run the suite (v.3.6.0)
 
@@ -14,13 +13,13 @@ the following command in your terminal:
 ```
 $ java -version 
 ```
-Same goes for maven
+Same goes for maven:
 ```
 $ mvn -v 
 ```
 If your Java or Maven are outdated or you don't have them in your machine, 
 you can always install or update them via Homebrew,
-using the following commands
+using the following commands:
 
 ```
 $ brew cask install java 
@@ -28,7 +27,9 @@ $ brew install maven
 ```
 
 ## How to run this suite?
-1. Clone this [repository](https://github.com/c-machado/dept-assessment) on your local machine
+1. Clone this [repository](https://github.com/c-machado/dept-assessment) 
+on your local machine, if you run into any issues about authentication try to clone it using
+the [Http](https://github.com/c-machado/dept-assessment.git) option
 1. Navigate to **dept-assessment** folder in your terminal
 1. Run the following command:
 ```
