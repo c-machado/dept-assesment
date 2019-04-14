@@ -9,7 +9,7 @@ public class RepositoryPage {
 
     private WebDriver driver;
 
-    @FindBy(css = "[itemprop='name']")
+    @FindBy(css = "a[data-pjax='#js-repo-pjax-container']")
     public WebElement repositoryName;
 
     @FindBy(css ="[data-selected-links*='repo_settings']")
