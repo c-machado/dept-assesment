@@ -26,7 +26,7 @@ public class CreateRepositoryPage {
     @FindBy(id = "repository_public_true")
     public WebElement radioBtnPublicRepo;
 
-    @FindBy(id = "repository_public_false")
+    @FindBy(id = "repository_visibility_public")
     public WebElement radioBtnPrivateRepo;
 
     @FindBy(id = "repository_auto_init")
